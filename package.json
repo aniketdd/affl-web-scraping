@@ -1,0 +1,53 @@
+{
+  "name": "affluent",
+  "version": "1.0.0",
+  "description": "web scraping example",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ./src",
+    "pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
+    "postpretty": "yarn lint --fix",
+    "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
+    "prestart": "babel ./src --out-dir build",
+    "start": "node ./build/bin/www",
+    "startdev": "nodemon --exec babel-node ./src/bin/www"
+  },
+  "dependencies": {
+    "axios": "0.20.0",
+    "cookie-parser": "~1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-validation": "1.0.3",
+    "helmet": "^3.23.1",
+    "http-errors": "~1.6.3",
+    "joi": "^14.3.1",
+    "moment": "^2.27.0",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.2.5",
+    "puppeteer": "5.3.1",
+    "sequelize": "^5.21.13",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/register": "^7.10.1",
+    "@babel/runtime": "^7.10.2",
+    "chai": "^4.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.5",
+    "sinon": "^9.0.2",
+    "supertest": "^4.0.2",
+    "puppeteer": "5.3.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
