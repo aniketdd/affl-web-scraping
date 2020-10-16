@@ -14,7 +14,7 @@ function renderUserTable({ users }) {
       <td>${item.email}</td>
       <td>${item.firstname}</td>
       <td>${item.lastname}</td>
-      <td>${item.avatar}</td>
+      <td> <img src="${item.avatar}" alt="${item.avatar}"/> </td>
     </tr>`
   ),'');
 }
