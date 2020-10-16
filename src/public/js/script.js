@@ -7,19 +7,16 @@ function renderUserTable({ users }) {
     <th>Last name</th>
     <th>Avatar</th>
   </tr>` +
-  users.map((item, index) => (
-    `<tr><td>${
-      item.userid
-    }</td><td>${
-      item.email
-    }</td><td>${
-      item.firstname
-    }</td><td>${
-      item.lastname
-    }</td><td>${
-      item.avatar
-    }</td></tr>`
-  ));
+  users.reduce((last, item, index) => (
+    `${last}
+    <tr>
+      <td>${item.userid}</td>
+      <td>${item.email}</td>
+      <td>${item.firstname}</td>
+      <td>${item.lastname}</td>
+      <td>${item.avatar}</td>
+    </tr>`
+  ),'');
 }
 
 function renderPerformanceTable({ data }) {
@@ -55,40 +52,41 @@ function renderPerformanceTable({ data }) {
     <th>Sales - Disputed</th>
     <th>Sales - Gross</th>
     <th>Sales - Pending</th>
-  </tr>` + data.map((item, index) => (
-    `<tr>
-    <td>${index}</td>
-    <td>${item.date}</td>
-    <td>${item.totalComm}</td>
-    <td>${item.netSaleCount}</td>
-    <td>${item.netLeadCount}</td>
-    <td>${item.clickCount}</td>
-    <td>${item.EPC}</td>
-    <td>${item.impCount}</td>
-    <td>${item.CR}</td>
-    <td>${item.bonusCount}</td>
-    <td>${item.commClickCount}</td>
-    <td>${item.apprComm}</td>
-    <td>${item.bonusComm}</td>
-    <td>${item.dispComm}</td>
-    <td>${item.grossComm}</td>
-    <td>${item.netComm}</td>
-    <td>${item.pendComm}</td>
-    <td>${item.apprLeadCount}</td>
-    <td>${item.dispLeadCount}</td>
-    <td>${item.grossLeadCount}</td>
-    <td>${item.pendLeadCount}</td>
-    <td>${item.apprSaleAmount}</td>
-    <td>${item.dispSaleAmount}</td>
-    <td>${item.grossSaleAmount}</td>
-    <td>${item.netSaleAmount}</td>
-    <td>${item.pendSaleAmount}</td>
-    <td>${item.apprSaleCount}</td>
-    <td>${item.dispSaleCount}</td>
-    <td>${item.grossSaleCount}</td>
-    <td>${item.pendSaleCount}</td>
+  </tr>` + data.reduce((last,item, index) => (
+    `${last}
+    <tr>
+      <td>${index+1}</td>
+      <td>${item.date}</td>
+      <td>${item.totalComm}</td>
+      <td>${item.netSaleCount}</td>
+      <td>${item.netLeadCount}</td>
+      <td>${item.clickCount}</td>
+      <td>${item.EPC}</td>
+      <td>${item.impCount}</td>
+      <td>${item.CR}</td>
+      <td>${item.bonusCount}</td>
+      <td>${item.commClickCount}</td>
+      <td>${item.apprComm}</td>
+      <td>${item.bonusComm}</td>
+      <td>${item.dispComm}</td>
+      <td>${item.grossComm}</td>
+      <td>${item.netComm}</td>
+      <td>${item.pendComm}</td>
+      <td>${item.apprLeadCount}</td>
+      <td>${item.dispLeadCount}</td>
+      <td>${item.grossLeadCount}</td>
+      <td>${item.pendLeadCount}</td>
+      <td>${item.apprSaleAmount}</td>
+      <td>${item.dispSaleAmount}</td>
+      <td>${item.grossSaleAmount}</td>
+      <td>${item.netSaleAmount}</td>
+      <td>${item.pendSaleAmount}</td>
+      <td>${item.apprSaleCount}</td>
+      <td>${item.dispSaleCount}</td>
+      <td>${item.grossSaleCount}</td>
+      <td>${item.pendSaleCount}</td>
     </tr>`
-  ));
+  ),'');
 }
 
 function ajax(url, renderFunction) {
