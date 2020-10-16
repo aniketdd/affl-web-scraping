@@ -8,9 +8,7 @@
     "pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
     "postpretty": "yarn lint --fix",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
-    "prestart": "babel ./src --out-dir build",
-    "start": "node ./build/bin/www",
-    "startdev": "nodemon --exec babel-node ./src/bin/www"
+    "start": "nodemon --exec babel-node ./src/bin/www"
   },
   "dependencies": {
     "axios": "0.20.0",
@@ -20,7 +18,7 @@
     "express-validation": "1.0.3",
     "helmet": "^3.23.1",
     "http-errors": "~1.6.3",
-    "joi": "^14.3.1",
+    "joi": "^17.2.1",
     "moment": "^2.27.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5",

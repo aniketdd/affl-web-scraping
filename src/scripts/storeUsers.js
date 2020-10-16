@@ -1,8 +1,9 @@
-import { getAllRegresUsers } from '../utils';
+import { getAllRegresUsers, logger } from '../utils';
 import models from '../data/models';
+import settings from '../config';
 
 export async function storeUsers() {
-  const { success, users } = await getAllRegresUsers('https://reqres.in/api/users');
+  const { success, users } = await getAllRegresUsers(settings.regresApiUrl);
   if (!success) {
     setTimeout(storeUsers, 60000);
     return;
@@ -16,12 +17,12 @@ export async function storeUsers() {
     lastname: user.last_name,
     avatar: user.avatar
   }))).then(() => {
-    console.log('Users Added');
+    logger.info('Users Added');
     return {
       success: true,
     };
   }).catch(error => {
-    console.error(error);
+    logger.error(error);
     return {
       success: false
     };

@@ -26,7 +26,7 @@ async function extractCurrentPageRows(page, columnNames) {
           if (index === 0) {
             rowObject[column] = Date.parse(row.children[index].children[0].innerText);
           } else {
-            rowObject[column] = row.children[index].innerText.trim().replace(/^\$/, '').replace(/%$/, '').replace(/,/g, '');
+            rowObject[column] = row.children[index]?.innerText?.trim().replace(/^\$|%$|,/g, '');
           }
         });
         allRowsInPage.push(rowObject);
@@ -105,8 +105,7 @@ async function selectAllColumns(page) {
     (saveColumnSetup) => saveColumnSetup.click()
   );
 }
-
-export default async function extractDatewiseData() {
+export default async function extractDatewiseData(startDate = '2019-04-30', endDate='2020-04-01') {
   let browser;
   try {
     browser = await puppeteer.launch({
@@ -121,7 +120,8 @@ export default async function extractDatewiseData() {
 
     await Promise.all([
       page.goto(
-        'https://develop.pub.afflu.net/list?type=dates&startDate=2020-03-20&endDate=2020-04-01'
+        // 'https://develop.pub.afflu.net/list?type=dates&startDate=2020-03-20&endDate=2020-04-01'
+        `https://develop.pub.afflu.net/list?type=dates&startDate=${startDate}&endDate=${endDate}`
       ),
       // page.goto("https://develop.pub.afflu.net/list?type=dates"),
       page.waitForNavigation({ waitUntil: 'networkidle0' }),
@@ -166,34 +166,4 @@ export default async function extractDatewiseData() {
   }
 }
 
-const obj = {
-  date: 'Jan 24, 2020',
-  totalComm: '$451.14',
-  netSaleCount: '140',
-  netLeadCount: '0',
-  clickCount: '3,751',
-  EPC: '$0.12',
-  impCount: '0',
-  CR: '3.73%',
-  bonusCount: '0',
-  commClickCount: '0',
-  apprComm: '$450.20',
-  bonusComm: '$0.00',
-  dispComm: '$209.66',
-  grossComm: '$660.80',
-  netComm: '$451.14',
-  pendComm: '$0.94',
-  apprLeadCount: '0',
-  dispLeadCount: '0',
-  grossLeadCount: '0',
-  pendLeadCount: '0',
-  apprSaleAmount: '$8,532.70',
-  dispSaleAmount: '$2,158.75',
-  grossSaleAmount: '$10,786.22',
-  netSaleAmount: '$8,627.47',
-  pendSaleAmount: '$94.77',
-  apprSaleCount: '139',
-  dispSaleCount: '0',
-  grossSaleCount: '140',
-  pendSaleCount: '1',
-};
+

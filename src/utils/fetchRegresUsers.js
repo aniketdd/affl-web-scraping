@@ -3,7 +3,7 @@
 const axios = require('axios');
 
 async function getUsersFromRegresApi(url, page = 1) {
-  const response = await axios.get(`${url}?page=${page}`);
+  const response = await axios.get(`${url}${page}`);
   if (response.status >= 200 && response.status < 300) {
     const { data } = response;
     const { page: currentPage, total_pages: totalPages, data: users } = data;
