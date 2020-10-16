@@ -4,6 +4,9 @@
     cp .env.local .env
 
 
+    npm install
+
+
     npm start
 
 

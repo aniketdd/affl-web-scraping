@@ -115,7 +115,7 @@ export default async function extractDatewiseData(startDate = '2019-04-30', endD
     });
 
     const page = await browser.newPage();
-    page.setDefaultTimeout(60000);
+    page.setDefaultTimeout(180000);
     await login(page);
 
     await Promise.all([
