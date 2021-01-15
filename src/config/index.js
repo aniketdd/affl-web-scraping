@@ -19,5 +19,7 @@ export default {
   dbPassword: envVars.DB_PASSWORD,
   nodeEnvironment: envVars.NODE_ENV,
   projectNmae: envVars.PROJECT_NAME,
-  regresApiUrl: envVars.REGRES_API_URL
+  regresApiUrl: envVars.REGRES_API_URL,
+  affluentUserName: envVars.AFFLUENT_USER_NAME,
+  affluentUserPassword: envVars.AFFLUENT_USER_PASSWORD
 };

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-dynamic-require */
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
@@ -17,7 +16,6 @@ fs.readdirSync(__dirname)
   .forEach((file) => {
     const fileName = path.join(__dirname, file);
 
-    // eslint-disable-next-line global-require
     const model = require(fileName).default(databaseService, Sequelize);
     db[model.name] = model;
   });

@@ -12,6 +12,9 @@ export const serviceSchema = Joi.object()
     DB_USER: Joi.string().required(),
     DB_PASSWORD: Joi.string().required(),
     REGRES_API_URL: Joi.string().required(),
+    AFFLUENT_USER_NAME: Joi.string().required(),
+    AFFLUENT_USER_PASSWORD: Joi.string().required()
+
   })
   .unknown()
   .required();

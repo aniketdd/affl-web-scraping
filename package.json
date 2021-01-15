@@ -8,6 +8,8 @@
     "pretty": "prettier --write '**/*.{js,json}' '!node_modules/**'",
     "postpretty": "yarn lint --fix",
     "test": "nyc --reporter=html --reporter=text --reporter=lcov mocha -r @babel/register",
+    "build": "babel ./src -d dist",
+    "startdev": "npm run build && node dist/bin/www.js",
     "start": "nodemon --exec babel-node ./src/bin/www"
   },
   "dependencies": {
@@ -34,6 +36,7 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/register": "^7.10.1",
     "@babel/runtime": "^7.10.2",
+    "babel-eslint": "^10.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",

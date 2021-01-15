@@ -5,7 +5,6 @@ const {
   dbHost, dbDatabase, dbUser, dbPassword
 } = settings;
 
-// eslint-disable-next-line import/prefer-default-export
 export const databaseService = new Sequelize(dbDatabase, dbUser, dbPassword, {
   host: dbHost,
   dialect: 'mysql',

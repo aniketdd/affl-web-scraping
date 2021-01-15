@@ -1,5 +1,3 @@
-/* eslint-disable function-paren-newline */
-/* eslint-disable implicit-arrow-linebreak */
 const axios = require('axios');
 
 async function getUsersFromRegresApi(url, page = 1) {
@@ -24,9 +22,7 @@ export default async function getAllUsers(url) {
     );
 
     const pages = await Promise.all(
-      pageNumbers.map(async (pageNumber) =>
-        getUsersFromRegresApi(url, pageNumber)
-      )
+      pageNumbers.map(async (pageNumber) => getUsersFromRegresApi(url, pageNumber))
     );
     pages.forEach((page) => {
       allUsers = allUsers.concat(page.users);
@@ -42,7 +38,3 @@ export default async function getAllUsers(url) {
     };
   }
 }
-
-// getAllUsers('https://reqres.in/api/users')
-//   .then(console.log)
-//   .catch(console.error);

@@ -6,10 +6,9 @@ export async function storeUsers() {
   const { success, users } = await getAllRegresUsers(settings.regresApiUrl);
   if (!success) {
     setTimeout(storeUsers, 60000);
-    return;
+    return null;
   }
   const { User } = models;
-  // eslint-disable-next-line consistent-return
   return User.bulkCreate(users.map(user => ({
     userid: user.id,
     email: user.email,

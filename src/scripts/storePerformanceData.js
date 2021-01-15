@@ -2,14 +2,13 @@ import { extractDatewiseData, logger } from '../utils';
 import models from '../data/models';
 
 export async function storePerformances() {
-  const { success, rows } = await extractDatewiseData();
+  const { success, rows } = await extractDatewiseData('2019-04-15', '2019-04-30');
   if (!success) {
-    logger.error("scraping failed, retrying");
+    logger.error('scraping failed, retrying');
     setTimeout(storePerformances, 300000);
-    return;
+    return null;
   }
   const { Performance } = models;
-  // eslint-disable-next-line consistent-return
   return Performance.bulkCreate(rows).then(() => {
     logger.info('performances Added');
     return {
